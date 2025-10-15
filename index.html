@@ -85,6 +85,10 @@
     .focusNotice{display:none;margin:12px 0;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:#fff7f7}
     .focusNotice .clear{margin-left:8px}
 
+      /* Anchor comfort: make in-page jumps stop below sticky bar */
+    html{scroll-behavior:smooth}
+    section[id], article[id]{scroll-margin-top:90px}
+
   </style>
 </head>
 <body>
@@ -539,9 +543,41 @@
     function setFocusMode(target){
       const notice = document.getElementById('focusNotice');
       const allBtn = document.querySelector('.focusbar .filters button[data-focus="all"]');
-      document.querySelectorAll('.focusbar .filters button').forEach(btn=>btn.classList.remove('active'));
-      if(!target || target==='all'){
+      const esc = (window.CSS && CSS.escape) ? CSS.escape : (s)=>String(s).replace(/[^a-zA-Z0-9_-]/g,'\$&');
+      const labelMap = {kalender:'Kalender', ars:'ARS', taal:'Taal & NTC', keuzehulp:'Keuzehulp'};
+
+      // Map subview "keuzehulp" naar sectie #taal (knop blijft bestaan)
+      const targetId = (target==='keuzehulp') ? 'taal' : target;
+
+      // Reset knopstatus
+      document.querySelectorAll('.focusbar .filters button').forEach(btn=>{
+        btn.classList.remove('active');
+        btn.setAttribute('aria-pressed','false');
+      });
+
+      // Toon alles
+      if(!targetId || targetId==='all'){
         SECTION_IDS.forEach(id=>{ const el = document.getElementById(id); if(el) el.style.display=''; });
+        notice.style.display='none';
+        if(allBtn){ allBtn.classList.add('active'); allBtn.setAttribute('aria-pressed','true'); }
+        return;
+      }
+
+      // Filter secties
+      SECTION_IDS.forEach(id=>{
+        const el = document.getElementById(id);
+        if(el) el.style.display = (id===targetId)? '' : 'none';
+      });
+
+      // Notice + URL-hash
+      notice.innerHTML = `Focus: <b>${labelMap[target]||target}</b> — <a href="#" class="clear">Toon alles</a>`;
+      notice.style.display='block';
+      location.hash = `focus=${encodeURIComponent(target)}`;
+
+      // Activeer bijbehorende knop (gebruik veilige selector)
+      const btn = document.querySelector(`.focusbar .filters button[data-focus="${esc(target)}"]`);
+      if(btn){ btn.classList.add('active'); btn.setAttribute('aria-pressed','true'); }
+    });
         notice.style.display='none';
         if(allBtn) allBtn.classList.add('active');
         return;
@@ -594,9 +630,9 @@
     const constantsView = document.getElementById('constantsView');
     constantsView.textContent = JSON.stringify(CFG, null, 2);
 
-    // Hero ARS year tags
-    document.getElementById('arsYearTag').textContent = CFG.brandYear;
-    document.getElementById('arsRefYear').textContent = CFG.arsReferenceDateYear;
+    // Hero ARS year tags (guarded)
+    { const yTag = document.getElementById('arsYearTag'); if(yTag) yTag.textContent = CFG.brandYear; }
+    { const rTag = document.getElementById('arsRefYear'); if(rTag) rTag.textContent = CFG.arsReferenceDateYear; }
 
     // -----------------------------
     //  Leeftijds‑wizard
