@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>School in Frankrijk (2025) – Praktische Gids voor NL/BE-ouders · v0.9</title>
+  <meta name="description" content="Actuele gids over het Franse onderwijssysteem (maternelle → lycée), kalenders per zone, ARS (rentrée), inschrijven, taalstrategie (NOB/NTC), en keuzehulp. Inclusief handige mini‑tools: leeftijds‑wizard, zone‑selector, ARS‑indicatie en schoolkeuze‑advies." />
+  <style>
+    :root{
+      --brand:#800000; /* NLFR maroon */
+      --ink:#111;
+      --muted:#666;
+      --bg:#fafafa;
+      --card:#fff;
+      --border:#e5e7eb;
+      --radius:14px;
+      --shadow:0 6px 20px rgba(0,0,0,.06);
+      --maxw:1100px;
+    }
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Helvetica,Arial,sans-serif}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:24px}
+    header.hero{background:linear-gradient(135deg,var(--brand) 0%,#a64f4f 100%);color:#fff;border-bottom:1px solid rgba(255,255,255,.15)}
+    .hero .wrap{padding:42px 24px}
+    .kicker{letter-spacing:.12em;text-transform:uppercase;font-weight:700;opacity:.85;font-size:.82rem}
+    h1{font-size:clamp(1.6rem,2.8vw,2.4rem);margin:.2rem 0 0;font-weight:900}
+    .sub{opacity:.9;margin-top:6px;max-width:850px}
+    nav.quick{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+    nav.quick a{display:inline-block;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.25);padding:8px 12px;border-radius:999px}
+
+    .grid{display:grid;grid-template-columns:1fr;gap:18px}
+    @media(min-width:900px){.grid{grid-template-columns:1.15fr .85fr}}
+
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .card .hd{padding:16px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:center}
+    .card .hd h2{font-size:1.1rem;margin:0}
+    .card .hd .tag{margin-left:auto;font-size:.85rem;color:var(--muted)}
+    .card .bd{padding:18px}
+    .hint{font-size:.92rem;color:var(--muted)}
+
+    .list-check{padding-left:0;list-style:none}
+    .list-check li{margin:6px 0;padding-left:28px;position:relative}
+    .list-check li:before{content:"✓";position:absolute;left:0;top:0;color:var(--brand);font-weight:700}
+
+    .pill{display:inline-block;padding:4px 8px;border:1px solid var(--border);border-radius:999px;background:#fff;color:var(--muted);font-size:.85rem}
+
+    .callout{background:#fff7f7;border-left:4px solid var(--brand);padding:12px 14px;border-radius:10px;border:1px solid #f6dede}
+
+    .two{display:grid;grid-template-columns:1fr;gap:14px}
+    @media(min-width:720px){.two{grid-template-columns:1fr 1fr}}
+
+    .controls label{display:block;font-weight:600;margin:10px 0 6px}
+    .controls input,.controls select{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:#fff}
+    .controls small{color:var(--muted)}
+    .result{margin-top:12px;padding:12px;border:1px dashed var(--border);border-radius:10px;background:#fcfcfc}
+
+    .badge{background:var(--brand);color:#fff;padding:2px 8px;border-radius:999px;font-size:.78rem}
+
+    footer{margin:40px 0 60px;color:var(--muted)}
+    .fine{font-size:.9rem;color:var(--muted)}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:.92rem}
+
+    .toc{display:flex;flex-wrap:wrap;gap:8px}
+    .toc a{background:#fff;border:1px solid var(--border);padding:6px 10px;border-radius:999px}
+
+    /* print */
+    @media print{
+      header.hero{background:#fff;color:#000;border:none}
+      nav.quick{display:none}
+      .card{break-inside:avoid}
+      a{text-decoration:underline}
+    }
+    /* Focusmenu (sticky) */
+    .focusbar{position:sticky;top:0;z-index:50;background:#ffffff;border-bottom:1px solid var(--border);box-shadow:0 6px 14px rgba(0,0,0,.04)}
+    .focusbar .wrap{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:10px 24px}
+    .focusbar b{margin-right:6px}
+    .focusbar .links{display:flex;flex-wrap:wrap;gap:8px}
+    .focusbar .links a{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;background:#fff}
+    .focusbar .filters{display:flex;flex-wrap:wrap;gap:8px;margin-left:auto}
+    .focusbar .filters button{padding:6px 10px;border:1px solid var(--border);border-radius:999px;background:#fafafa;cursor:pointer}
+    .focusbar .filters button.active{background:var(--brand);border-color:var(--brand);color:#fff}
+
+    /* Focus notice */
+    .focusNotice{display:none;margin:12px 0;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:#fff7f7}
+    .focusNotice .clear{margin-left:8px}
+
+  </style>
+</head>
+<body>
+  <!-- Focusmenu (Snel naar + Focus) -->
+  <nav class="focusbar" aria-label="Snel naar & Focus">
+    <div class="wrap">
+      <b>Snel naar:</b>
+      <div class="links" role="navigation">
+        <a href="#overzicht" title="Systeem in 1 minuut">Overzicht</a>
+        <a href="#kalender" title="Vakanties & zones A/B/C">Kalender</a>
+        <a href="#ars" title="Allocation de rentrée schol. (indicatie)">ARS</a>
+        <a href="#inschrijven" title="Inschrijven & documenten">Inschrijven</a>
+        <a href="#taal" title="Nederlands bijhouden (NOB/NTC)">Taal & NTC</a>
+        <a href="#keuzehulp" title="Keuzehulp (5 vragen)">Keuzehulp</a>
+        <a href="#achtergrond" title="Cultuur & Aanpassing">Achtergrond</a>
+        <a href="#bronnen" title="Bronnen & tools">Bronnen</a>
+      </div>
+      <div class="filters" role="group" aria-label="Focusweergave">
+        <button data-focus="all" class="active" title="Toon alle secties">Alles</button>
+        <button data-focus="kalender" title="Toon alleen de kalender">Alleen Kalender</button>
+        <button data-focus="ars" title="Toon alleen ARS">Alleen ARS</button>
+        <button data-focus="taal" title="Toon alleen Taal & NTC">Alleen Taal & NTC</button>
+        <button data-focus="keuzehulp" title="Toon alleen Keuzehulp">Alleen Keuzehulp</button>
+      </div>
+    </div>
+  </nav>
+  <header class="hero">
+    <div class="wrap">
+      <div class="kicker">Gids 2025 · Frankrijk · <span class="badge">v0.9</span></div>
+      <h1>School in Frankrijk – korte, praktische gids voor NL/BE‑ouders</h1>
+      <p class="sub">Overzicht van maternelle → élémentaire → collège → lycée, actuele ritmes, vakanties per zone, ARS (rentrée), inschrijven, taalstrategie (NOB/NTC) en keuzehulp. Inclusief mini‑tools: leeftijds‑wizard, zone‑selector, ARS‑indicatie en schoolkeuze‑advies. Alles compact en praktisch.</p>
+      <nav class="quick">
+        <a href="#overzicht">Systeem in 1 minuut</a>
+        <a href="#kalender">Kalender per zone</a>
+        <a href="#ars">ARS (rentrée) indicatie</a>
+        <a href="#inschrijven">Inschrijven</a>
+        <a href="#taal">Taal & NOB/NTC</a>
+        <a href="#keuzehulp">Keuzehulp</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div id="focusNotice" class="focusNotice" role="status" aria-live="polite"></div>
+    <!-- Intro & Nieuwsbrief -->
+    <section id="intro" class="grid" style="margin-bottom:14px">
+      <article class="card">
+        <div class="hd"><h2>Welkom – wat je hier vindt</h2><span class="tag">Overzicht</span></div>
+        <div class="bd">
+          <p>Deze pagina bundelt <b>alles wat NL/BE‑ouders in Frankrijk</b> praktisch nodig hebben: systeem in één oogopslag, vakanties per zone, ARS‑indicatie, inschrijven, taalstrategie (NOB/NTC), keuzehulp én achtergrond (cultuurverschillen, aanpassing per leeftijd, routes om Nederlands bij te houden en aansluiting met NL‑onderwijs).</p>
+          <p class="hint">Modelgedachte: elk blok is zelfstandig te gebruiken, jaarlijks bij te werken en geschikt voor nieuwsbrief‑samenvattingen.</p>
+        </div>
+      </article>
+      <article class="card" id="newsletter">
+        <div class="hd"><h2>Nieuwsbrief‑snippet (auto herbruikbaar)</h2><span class="tag">Teaser</span></div>
+        <div class="bd">
+          <p><b>Nieuw in v0.9:</b> cultuur in de klas (NL↔FR) in 8 feiten, realistische aanpassing per leeftijd, vier routes om Nederlands bij te houden (NOB/NTC, Section NL, Wereldschool, verenigingen) en een strakke checklist voor aansluiting met NL‑onderwijs.</p>
+          <ul class="list-check">
+            <li>Check je <b>zone A/B/C</b> en voeg vakanties toe aan je agenda.</li>
+            <li>Gebruik de <b>ARS‑indicatie</b> (verifieer bij Service‑Public/CAF).</li>
+            <li>Kies bewust: <b>Franse school + NTC</b> of <b>internationaal + NL</b>.</li>
+          </ul>
+          <p class="hint">Kopieer deze alinea’s 1‑op‑1 in je nieuwsbrief/landing. Links staan onderaan bij <i>Bronnen</i>.</p>
+        </div>
+      </article>
+    </section>
+    <section id="overzicht" class="grid">
+      <article class="card">
+        <div class="hd"><h2>1) In één oogopslag</h2><span class="tag">Actueel 2025</span></div>
+        <div class="bd">
+          <ul class="list-check">
+            <li><b>Opbouw</b>: maternelle (±2,5–5), élémentaire (6–10), collège (11–14), lycée (15–18, baccalauréat).</li>
+            <li><b>Ritme</b>: in de praktijk vaak <b>4,5 dagen</b> (woensdag‑ochtend) of lokale variant via mairie/academie.</li>
+            <li><b>Choc des savoirs (2024–2027)</b>: in <b>6e–5e</b> Frans & wiskunde in <b>groepen op niveau/behoefte</b>; uitwerking per collège verschilt.</li>
+          </ul>
+          <p class="hint">Tip: volg berichten van <span class="pill">Ministère</span> en je <span class="pill">Académie</span> voor lokale invulling.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="hd"><h2>Mini‑wizard: welke fase past bij je kind?</h2><span class="tag">Leeftijd → fase</span></div>
+        <div class="bd">
+          <div class="controls">
+            <label for="age">Leeftijd (jaren, afgerond)</label>
+            <input id="age" type="number" inputmode="numeric" min="0" max="20" placeholder="bijv. 7" />
+            <div class="result" id="ageOut">Voer een leeftijd in.</div>
+          </div>
+          <p class="hint">Gebruik dit als startpunt. School bepaalt definitieve plaatsing o.b.v. geboortedatum en dossier.</p>
+        </div>
+      </article>
+    </section>
+
+    <section id="kalender" class="grid" style="margin-top:14px">
+      <article class="card">
+        <div class="hd"><h2>2) Vakanties & kalender per zone</h2><span class="tag">Zones A · B · C</span></div>
+        <div class="bd">
+          <p>Frankrijk werkt met <b>zone A/B/C</b> voor (school)vakanties. Controleer je <b>academie/commune</b> en noteer: rentrée, Toussaint, Noël, hiver, printemps, été. Let op lokale uitzonderingen.</p>
+          <div class="two controls">
+            <div>
+              <label for="zone">Kies je zone</label>
+              <select id="zone">
+                <option value="">— Selecteer —</option>
+                <option>Zone A</option>
+                <option>Zone B</option>
+                <option>Zone C</option>
+              </select>
+              <small>We tonen officiële links en een printbare checklist.</small>
+            </div>
+            <div>
+              <label for="year">Schooljaar</label>
+              <select id="year">
+                <option>2025–2026</option>
+                <option>2026–2027</option>
+              </select>
+              <small>Kalender wordt jaarlijks vastgesteld. Check updates rond voorjaar.</small>
+            </div>
+          </div>
+          <div class="result" id="zoneOut">Selecteer je zone voor officiële kalenderlinks en notities.</div>
+          <details style="margin-top:10px">
+            <summary><b>Wat is Zone A/B/C?</b> (academies per zone)</summary>
+            <p class="hint">Zones zijn <b>sets van académies</b> (niet regio’s). Vind je zone via: 1) kijk op je <i>académie</i> of school, 2) of gebruik de <a href="https://www.service-public.gouv.fr/simulateur/calcul/Dates_Vacances_Scolaires" target="_blank" rel="noopener">Service‑Public simulator</a> (kies departement). Overzeese gebieden (DOM‑TOM, Corse) kunnen afwijken: check de Ministère‑kalender.</p>
+            <div class="two" style="margin-top:10px">
+              <div>
+                <b>Zone A</b>
+                <ul class="list-check">
+                  <li>Besançon</li><li>Bordeaux</li><li>Clermont‑Ferrand</li><li>Dijon</li><li>Grenoble</li><li>Limoges</li><li>Lyon</li><li>Poitiers</li>
+                </ul>
+              </div>
+              <div>
+                <b>Zone B</b>
+                <ul class="list-check">
+                  <li>Aix‑Marseille</li><li>Amiens</li><li>Lille</li><li>Nancy‑Metz</li><li>Nantes</li><li>Nice</li><li>Normandie (Caen/Rouen)</li><li>Orléans‑Tours</li><li>Reims</li><li>Rennes</li><li>Strasbourg</li>
+                </ul>
+              </div>
+              <div>
+                <b>Zone C</b>
+                <ul class="list-check">
+                  <li>Créteil</li><li>Montpellier</li><li>Paris</li><li>Toulouse</li><li>Versailles</li>
+                </ul>
+              </div>
+            </div>
+            <p class="hint">Check altijd de officiële kalender links hierboven voor het actuele schooljaar en uitzonderingen.</p>
+          </details>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="hd"><h2>3) ARS (Allocation de rentrée scolaire)</h2><span class="tag">Indicatie · geen recht</span></div>
+        <div class="bd">
+          <div class="callout"><b>Let op:</b> dit is <b>alleen een indicatie</b>, geen recht op ARS. Definitieve bedragen/plafonds check je bij <a href="https://www.service-public.fr/particuliers/vosdroits/F1878" target="_blank" rel="noopener">Service‑Public (ARS)</a> en <a href="https://www.caf.fr/" target="_blank" rel="noopener">CAF</a>. Leeftijd wordt bepaald op <b>31‑12‑<span id="arsRefYear">2024</span></b>.</div>
+          <div class="controls">
+            <label for="kids">Aantal kinderen (6–18 jaar)</label>
+            <input id="kids" type="number" min="1" max="8" placeholder="bijv. 2" />
+
+            <div id="kidsAgesWrap"></div>
+
+            <label for="incomeBand">Inkomensband (grove indicatie)</label>
+            <select id="incomeBand">
+              <option value="unknown">Onbekend / wil ik niet invullen</option>
+              <option value="likely">Waarschijnlijk onder plafond</option>
+              <option value="maybe">Rond het plafond</option>
+              <option value="over">Boven plafond</option>
+            </select>
+          </div>
+          <div class="result" id="arsOut">Vul aantal kinderen in en hun leeftijd op 31‑12‑<span id="arsRefYear">2024</span>.</div>
+          <p class="hint">Bronnen: <span class="pill">Service‑Public</span> & <span class="pill">CAF</span>. Gebruik hun simulator/teksten voor het bindende bedrag.</p>
+        </div>
+      </article>
+    </section>
+
+    <section id="inschrijven" class="grid" style="margin-top:14px">
+      <article class="card">
+        <div class="hd"><h2>4) Inschrijven & documenten</h2><span class="tag">Praktisch</span></div>
+        <div class="bd">
+          <ul class="list-check">
+            <li><b>Primair</b>: via <b>mairie</b>. <b>Secundair</b>: via <b>rectorat</b> (académie).</li>
+            <li><b>Meenemen</b>: geboorteakte (zo nodig FR‑vertaling), vaccinatiebewijs (DTP), laatste rapport, bewijs adres (EDF/telefoon), ID’s.</li>
+            <li><b>Cultuur</b>: langere dagen, <b>cantine</b> (warm eten), relatief veel huiswerk – wen aan de agenda.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="hd"><h2>5) “Choc des savoirs” – wat merk je?</h2><span class="tag">2024–2027</span></div>
+        <div class="bd">
+          <p><b>Wat is het?</b> Een meerjarig programma van het Ministère om <b>basisvaardigheden</b> (Frans/wiskunde) te versterken, met gerichtere begeleiding.</p>
+          <ul class="list-check">
+            <li><b>6e–5e</b>: voor Frans & wiskunde werken scholen met <b>groepen naar behoefte/niveau</b> (een deel van de uren). Andere vakken blijven in de stamklas.</li>
+            <li><b>Begeleiding</b>: extra <i>soutien</i>, herhaling en expliciete instructie; invulling verschilt per collège/academie.</li>
+            <li><b>Evaluatie</b>: regelmatige toetsing/diagnose om groepen en aanpak bij te stellen.</li>
+            <li><b>Let op</b>: uitvoering is lokaal – vraag naar de planning op jouw school en bekijk de schoolgids/ENT.</li>
+          </ul>
+          <p class="hint">Doel: minder achterstanden, meer rust en duidelijkheid in basisvakken. Vraag hoe jouw school groepsindeling en overgangsmomenten regelt.</p>
+        </div>
+      </article>
+    </section>
+
+    <section id="taal" class="grid" style="margin-top:14px">
+      <article class="card">
+        <div class="hd"><h2>6) Taalstrategie: Frans & Nederlands (NOB/NTC)</h2><span class="tag">Integratie‑proof</span></div>
+        <div class="bd">
+          <p><b>Beste integratie</b>: gewone Franse school. <b>Nederlands bijhouden</b> via <b>NOB/NTC</b> (aanvullend, gericht op terugkeer/studiekeuze). Gebruik de NOB‑zoeker voor locaties in Frankrijk.</p>
+          <div class="callout">
+            Handige links (gecontroleerde externe bronnen):
+            <ul>
+              <li>NOB/NTC‑zoeker: <a href="https://www.stichtingnob.nl/scholenzoeker" target="_blank" rel="noopener">stichtingnob.nl/scholenzoeker</a></li>
+              <li>Wereldschool – Nederlands onderwijs in/vanuit Frankrijk: <a href="https://www.wereldschool.nl/nederlands-onderwijs-in-het-buitenland/frankrijk/" target="_blank" rel="noopener">wereldschool.nl – Frankrijk</a></li>
+              <li>Section NL – netwerken Nederlandstalig onderwijs/sections internationales: <a href="https://www.sectionnl.fr/" target="_blank" rel="noopener">sectionnl.fr</a></li>
+              <li>NVTC (Nederlandse Vereniging Taal & Cultuur, FR): <a href="https://nvtc.fr/" target="_blank" rel="noopener">nvtc.fr</a></li>
+              <li>Ministère – schoolkalender/beleid: <a href="https://www.education.gouv.fr/" target="_blank" rel="noopener">education.gouv.fr</a></li>
+              <li>Service‑Public – vakanties (kalender/simulator): <a href="https://www.service-public.fr/particuliers/vosdroits/F31922" target="_blank" rel="noopener">service-public.fr/F31922</a></li>
+              <li>Service‑Public – ARS (allocation rentrée): <a href="https://www.service-public.fr/particuliers/vosdroits/F1878" target="_blank" rel="noopener">service-public.fr/F1878</a></li>
+              <li>CAF – uitkeringen: <a href="https://www.caf.fr/" target="_blank" rel="noopener">caf.fr</a></li>
+              <li>Nederlandse verenigingen in Frankrijk (overzicht): <a href="https://www.nederlanders.fr/profiles/blogs/overzicht-van-nederlandse-verenigingen-in-frankrijk" target="_blank" rel="noopener">nederlanders.fr – verenigingen</a></li>
+              <li>Onderwijs-artikelen op Nederlanders.fr: <a href="https://www.nederlanders.fr/profiles/blog/list?tag=Onderwijs" target="_blank" rel="noopener">tag: Onderwijs</a> </li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article id="keuzehulp" class="card">
+        <div class="hd"><h2>7) Schoolkeuze‑advies (5 vragen)</h2><span class="tag">Persoonlijk</span></div>
+        <div class="bd">
+          <div class="controls">
+            <label>Blijft het gezin ≥ 3 jaar in Frankrijk?</label>
+            <select id="q1"><option>—</option><option>Ja</option><option>Nee / onzeker</option></select>
+            <label>Is een internationaal (IB/ENG) curriculum een harde eis?</label>
+            <select id="q2"><option>—</option><option>Ja, bij voorkeur</option><option>Nee</option></select>
+            <label>Budget voor schoolgeld en reistijd/afstand acceptabel?</label>
+            <select id="q3"><option>—</option><option>Ja</option><option>Nee / liever niet</option></select>
+            <label>Is terugkeer naar NL/BE binnen 5 jaar waarschijnlijk?</label>
+            <select id="q4"><option>—</option><option>Ja</option><option>Nee / onbekend</option></select>
+            <label>Wil je maximale lokale integratie (taal/netwerk)?</label>
+            <select id="q5"><option>—</option><option>Ja</option><option>Niet per se</option></select>
+          </div>
+          <div class="result" id="advice">Beantwoord de vragen voor een voorstel.</div>
+          <p class="hint">Uitkomst is richtinggevend. Bezoek altijd 2–3 scholen en praat met ouders ter plekke.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- ACHTERGROND & CONTEXT -->
+    <section id="achtergrond" class="grid" style="margin-top:14px">
+      <article class="card">
+        <div class="hd"><h2>9) Cultuur in de klas (NL ↔ FR) in 8 feiten</h2><span class="tag">Herkenbaar & praktisch</span></div>
+        <div class="bd">
+          <ul class="list-check">
+            <li><b>Cijfers & toetsen</b>: schaal 0–20, frequente <i>contrôles</i> en <i>devoirs</i>; weging verschilt per vak.</li>
+            <li><b>Huiswerkritme</b>: vaker dagelijks; agenda is leidend en wordt gecontroleerd.</li>
+            <li><b>Formele aanspreekvorm</b>: <i>vous</i> naar docenten; contact via agenda/ENT, ouderavonden zijn compact.</li>
+            <li><b>Structuur & rol</b>: <i>professeur principal</i> coördineert; bij issues ook CPE/chef d’établissement.</li>
+            <li><b>Schooldag</b>: langer, met warm eten in de <i>cantine</i>; woensdag kan kort of (deels) vrij.</li>
+            <li><b>Extra steun</b>: <i>soutien</i>/bijles is normaal; vraag expliciet naar taalondersteuning voor nieuwkomers.</li>
+            <li><b>Ouderrol</b>: minder klassikale ouderparticipatie dan in NL; betrokkenheid vooral thuis en 1‑op‑1.</li>
+            <li><b>Buitenschoolse activiteiten</b>: meer via clubs/mairie dan via school.</li>
+          </ul>
+          <div class="callout">Korte tips: vraag waar mogelijk <b>2 proefweken</b>; maak (met toestemming) een <b>foto van het klasbord of de agenda/ENT</b> met huiswerk aan het eind van de les; plan <b>vaste huiswerkblokken</b> (kort, dagelijks).</div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="hd"><h2>10) Aanpassingssnelheid per leeftijd</h2><span class="tag">Realistische verwachtingen</span></div>
+        <div class="bd">
+          <div class="two">
+            <div>
+              <h3 style="margin:0 0 6px 0">2–5 jaar (maternelle)</h3>
+              <ul class="list-check">
+                <li><b>Taal</b>: snel; 2–6 maanden voor comfort.</li>
+                <li><b>Let op</b>: vermoeidheid/overprikkeling; wen aan ritme.</li>
+                <li><b>Actie</b>: pictogrammen, voorspelbare routines, spelenderwijs FR.</li>
+              </ul>
+              <h3 style="margin:14px 0 6px 0">6–10 jaar (élémentaire)</h3>
+              <ul class="list-check">
+                <li><b>Taal</b>: 3–9 maanden; technisch lezen/schrijven FR vragen oefening.</li>
+                <li><b>Risico</b>: daling motivatie door cijfers/tempo.</li>
+                <li><b>Actie</b>: woordenschatkaartjes, 15‑minuten blokken, voorlezen.</li>
+              </ul>
+            </div>
+            <div>
+              <h3 style="margin:0 0 6px 0">11–14 jaar (collège)</h3>
+              <ul class="list-check">
+                <li><b>Taal</b>: 6–12 maanden voor vaktaal; FR/MATHS soms in niveau‑groepen (6e–5e).</li>
+                <li><b>Risico</b>: identiteit/vergelijking met klas; histoire‑géo/physique talig.</li>
+                <li><b>Actie</b>: bijles/soutien, samenvatten, samen plannen.</li>
+              </ul>
+              <h3 style="margin:14px 0 6px 0">15–18 jaar (lycée)</h3>
+              <ul class="list-check">
+                <li><b>Taal</b>: 9–18 maanden voor essays/argumentatie; bac is talig.</li>
+                <li><b>Risico</b>: achterstand op SE’s/épreuves; profielkeuzes.</li>
+                <li><b>Actie</b>: focus kernvakken, vroeg oriënteren (général/techno/pro), evt. mentor.</li>
+              </ul>
+            </div>
+          </div>
+          <p class="hint">Vuistregel: jonger = sneller sociaal‑taaladapt; ouder = meer vaktaal/strategie nodig.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="hd"><h2>11) Nederlands bijhouden in Frankrijk – 4 routes</h2><span class="tag">Kies wat past</span></div>
+        <div class="bd">
+          <ol class="list-check">
+            <li><b>NTC via Stichting NOB</b>: aanvullend NL‑onderwijs (taal & cultuur), gericht op terugkeer/studiekeuze; zoek locaties met de NOB‑zoeker.</li>
+            <li><b>Sections internationales / Section NL</b>: tweetalige trajecten waar beschikbaar; goed voor sterke taalroute naast Frans.</li>
+            <li><b>Afstandsonderwijs (Wereldschool)</b>: flexibel bij reistijd of tijdelijk verblijf; combineer met lokale leesclub.</li>
+            <li><b>Verenigingen (Neerlandia/NVTC)</b>: taal/cultuur, leesgroepen, examens; sociaal netwerk voor gezinnen.</li>
+          </ol>
+          <div class="callout">Praktijk: kies <b>Franse school + NTC</b> als default; voeg 2/3 toe wanneer ambitie/locatie daarom vraagt.</div>
+          <p class="hint">Voorbeeld: De Nederlandse School Parijs (NOB) voor Île‑de‑France.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="hd"><h2>11b) Adresboekje – Nederlands onderwijs (selectie)</h2><span class="tag">Uitbreidbaar</span></div>
+        <div class="bd">
+          <ul class="list-check">
+            <li><b>NOB Scholenzoeker (alle NTC‑locaties)</b>: <a href="https://www.stichtingnob.nl/scholenzoeker" target="_blank" rel="noopener">stichtingnob.nl/scholenzoeker</a></li>
+            <li><b>De Nederlandse School Parijs (NTC)</b>: <a href="https://stichtingnob.nl/school/158/de-nederlandse-school-parijs" target="_blank" rel="noopener">stichtingnob.nl/school/158/de-nederlandse-school-parijs</a></li>
+            <li><b>NTC Côte d’Azur (NTC)</b>: <a href="https://stichtingnob.nl/school/120/ntc-cote-dazur" target="_blank" rel="noopener">stichtingnob.nl/school/120/ntc-cote-dazur</a></li>
+            <li><b>Neerlandia (Île‑de‑France)</b>: <a href="https://www.neerlandia.fr/index.php/nl/voor-kinderen/nederlands-onderwijs" target="_blank" rel="noopener">neerlandia.fr – onderwijs</a></li>
+            <li><b>Section NL</b> (netwerk/sections internationales): <a href="https://www.sectionnl.fr/" target="_blank" rel="noopener">sectionnl.fr</a></li>
+            <li><b>NVTC</b> (vereniging taal & cultuur): <a href="https://nvtc.fr/" target="_blank" rel="noopener">nvtc.fr</a></li>
+            <li><b>Nederlandse verenigingen in Frankrijk (overzicht)</b>: <a href="https://www.nederlanders.fr/profiles/blogs/overzicht-van-nederlandse-verenigingen-in-frankrijk" target="_blank" rel="noopener">nederlanders.fr – verenigingen</a></li>
+            <li><b>Onderwijs op Nederlanders.fr</b>: <a href="https://www.nederlanders.fr/profiles/blog/list?tag=Onderwijs" target="_blank" rel="noopener">tag: Onderwijs</a></li>
+          </ul>
+          <p class="hint">Wil je meer locaties toevoegen? Stuur naam · plaats · URL, dan zetten we ze erbij.</p>
+        </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="hd"><h2>12) Aansluiting met NL‑onderwijs (heen & terug)</h2><span class="tag">Zonder gaten</span></div>
+        <div class="bd">
+          <h3 style="margin:0 0 6px 0">A. Voor vertrek naar Frankrijk</h3>
+          <ul class="list-check">
+            <li><b>Dossier</b>: recente rapporten, leerlijnen, evt. dyslexie/dyscalculieverklaringen.</li>
+            <li><b>NL‑anker</b>: start NTC, stel taaldoelen (lezen/spellen/schrijven) per kind.</li>
+            <li><b>Vakprioriteit</b>: NL‑rekenen & technisch lezen vasthouden; basisgrammatica FR klaarzetten.</li>
+          </ul>
+          <h3 style="margin:14px 0 6px 0">B. Tijdens verblijf in Frankrijk</h3>
+          <ul class="list-check">
+            <li><b>Curriculum‑mapping</b>: leg FR‑vakken naast NL‑leerlijnen om hiaten te zien.</li>
+            <li><b>Portfolio</b>: verzamel rapporten/bulletins/projecten.</li>
+            <li><b>Taal</b>: NL‑leeslijst + CEFR‑doelen voor FR (A2/B1/B2 afhankelijk van leeftijd/fase).</li>
+          </ul>
+          <h3 style="margin:14px 0 6px 0">C. Terugkeer naar NL/BE</h3>
+          <ul class="list-check">
+            <li><b>Plaatsing</b>: leeftijd + dossier + niveau; leg FR‑cijfers (0–20) uit vs. NL‑schaal.</li>
+            <li><b>Toetsing</b>: plan indien nodig bijspijkertraject.</li>
+            <li><b>VO‑doorstroom</b>: overleg vroeg over profielkeuzes; gebruik NTC‑rapportage.</li>
+          </ul>
+          <div class="callout">Werk met een eenvoudige tabel “FR → NL” (vak, leerjaar, kernonderwerpen) voor soepele intakegesprekken.</div>
+          <h3 style="margin:14px 0 6px 0">FR → NL mapping (voorbeeldtabel)</h3>
+          <div style="overflow:auto">
+            <table style="width:100%;border-collapse:collapse">
+              <thead>
+                <tr>
+                  <th style="text-align:left;border-bottom:1px solid var(--border);padding:8px">FR‑vak</th>
+                  <th style="text-align:left;border-bottom:1px solid var(--border);padding:8px">FR‑niveau</th>
+                  <th style="text-align:left;border-bottom:1px solid var(--border);padding:8px">NL‑equivalent</th>
+                  <th style="text-align:left;border-bottom:1px solid var(--border);padding:8px">Kernonderwerpen</th>
+                  <th style="text-align:left;border-bottom:1px solid var(--border);padding:8px">Brug/notities</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td style="padding:8px">Français</td><td style="padding:8px">CM2</td><td style="padding:8px">Groep 7/8</td><td style="padding:8px">Begrijpend lezen, spelling, schrijfopdrachten</td><td style="padding:8px">NL‑dictees/woordpakket bijhouden</td></tr>
+                <tr><td style="padding:8px">Mathématiques</td><td style="padding:8px">CM2</td><td style="padding:8px">Groep 7/8</td><td style="padding:8px">Breuken, procenten, meten</td><td style="padding:8px">Rekenstrategie NL en FR gelijk trekken</td></tr>
+                <tr><td style="padding:8px">Français</td><td style="padding:8px">6e</td><td style="padding:8px">Brugklas</td><td style="padding:8px">Tekstanalyse, grammatica, opstellen</td><td style="padding:8px">Essaystructuur uitleggen (NL vs FR)</td></tr>
+                <tr><td style="padding:8px">Maths</td><td style="padding:8px">5e</td><td style="padding:8px">Klas 2</td><td style="padding:8px">Vergelijkingen, verhoudingen</td><td style="padding:8px">Rekenschema’s naast elkaar leggen</td></tr>
+                <tr><td style="padding:8px">Histoire‑Géo</td><td style="padding:8px">4e</td><td style="padding:8px">Klas 3</td><td style="padding:8px">Europese geschiedenis, kaartvaardigheid</td><td style="padding:8px">Termenlijst FR↔NL</td></tr>
+                <tr><td style="padding:8px">Physique‑Chimie</td><td style="padding:8px">3e</td><td style="padding:8px">Klas 3/4</td><td style="padding:8px">Stoffen, eenvoudige reacties, metingen</td><td style="padding:8px">Formule‑notatie afstemmen</td></tr>
+                <tr><td style="padding:8px">SVT</td><td style="padding:8px">3e</td><td style="padding:8px">Klas 3/4</td><td style="padding:8px">Biologie: ecosystemen, anatomie</td><td style="padding:8px">Nederlandse termenlijst maken</td></tr>
+                <tr><td style="padding:8px">EMC</td><td style="padding:8px">Collège</td><td style="padding:8px">Klas 1‑3</td><td style="padding:8px">Burgerschap, mediawijsheid</td><td style="padding:8px">Koppeling met NL burgerschapsdoelen</td></tr>
+                <tr><td style="padding:8px">Technologie</td><td style="padding:8px">Collège</td><td style="padding:8px">Klas 1‑3</td><td style="padding:8px">Ontwerpen, algoritmes, digitale tools</td><td style="padding:8px">Projectdocumentatie tweetalig</td></tr>
+                <tr><td style="padding:8px">LVE (ENG/NL)</td><td style="padding:8px">Collège</td><td style="padding:8px">Klas 1‑3</td><td style="padding:8px">Luisteren, spreken, schrijven</td><td style="padding:8px">CEFR‑doelen noteren</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section id="bronnen" class="grid" style="margin-top:14px">
+      <article class="card">
+        <div class="hd"><h2>Bronnen & verder lezen</h2><span class="tag">Externe links</span></div>
+        <div class="bd">
+          <ul class="list-check">
+            <li><a href="https://www.wereldschool.nl/nederlands-onderwijs-in-het-buitenland/frankrijk/" target="_blank" rel="noopener">Wereldschool – Nederlands onderwijs in/vanuit Frankrijk</a></li>
+            <li><a href="https://www.sectionnl.fr/" target="_blank" rel="noopener">Section NL – netwerken Nederlandstalig onderwijs/sections internationales</a></li>
+            <li><a href="https://frankrijk.nl/15-verschillen-tussen-franse-nederlandse-scholen-onderwijs/" target="_blank" rel="noopener">frankrijk.nl – 15 verschillen tussen Franse en Nederlandse scholen</a></li>
+            <li><a href="https://nvtc.fr/" target="_blank" rel="noopener">NVTC – Nederlandse Vereniging Taal & Cultuur (Frankrijk)</a></li>
+            <li><a href="https://www.stichtingnob.nl/" target="_blank" rel="noopener">Stichting NOB – NTC‑zoeker en informatie</a></li>
+            <li><a href="https://www.education.gouv.fr/calendrier-scolaire-2025-2026-100148" target="_blank" rel="noopener">Ministère – kalender 2025–2026</a></li>
+            <li><a href="https://www.service-public.fr/particuliers/actualites/A18008" target="_blank" rel="noopener">Service‑Public – kalenderupdate</a> · <a href="https://www.service-public.gouv.fr/simulateur/calcul/Dates_Vacances_Scolaires" target="_blank" rel="noopener">simulator</a> · <a href="https://www.service-public.fr/particuliers/vosdroits/F1878" target="_blank" rel="noopener">ARS</a></li>
+            <li><a href="https://www.caf.fr/" target="_blank" rel="noopener">CAF – uitkeringen (waaronder ARS)</a></li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <section id="faq" class="grid" style="margin-top:14px">
+      <article class="card">
+        <div class="hd"><h2>8) Veelgestelde vragen</h2><span class="tag">Kort & duidelijk</span></div>
+        <div class="bd">
+          <h3>Huiswerk is veel – hoe help ik?</h3>
+          <p>Plan vaste, korte blokken (20–30 min), gebruik de schoolagenda/ENT, en herhaal dagelijks. Overweeg tijdelijke <i>soutien</i>/bijles bij instroom.</p>
+          <h3>Discipline & pesten – naar wie ga ik?</h3>
+          <p>Naar de <i>professeur principal</i> en/of CPE. Vraag naar het pestprotocol, noteer incidenten en afspraken in de agenda/ENT.</p>
+          <h3>Vervoer op het platteland</h3>
+          <p>De <i>car de ramassage</i> (schoolbus) loopt via mairie/région. Vraag naar abonnement, halte en tijden.</p>
+          <h3>Vaccins/sportkeuring</h3>
+          <p>Primair: DTP vereist bij inschrijving. Secundair: scholen communiceren eisen en sportverklaringen per jaar.</p>
+          <h3>Taalachterstand inhalen</h3>
+          <p>Kies 1–2 kernvakken voor extra focus, vraag om <i>soutien</i>, en zet thuis dagelijkse lees/schrijfmomenten in FR én NL.</p>
+          <h3>Cijfers 0–20 → NL duiding</h3>
+          <p>Vraag om rubric/weging per vak. Leg bij terugkeer uit hoe 0–20 zich verhoudt tot NL‑beoordelingen.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="hd"><h2>Credits & bijwerken</h2><span class="tag">Transparant</span></div>
+        <div class="bd">
+          <p><b>Deze module werd samengesteld voor Communities Abroad©; de ondersteunende serviceorganisatie voor Nederlanders.fr, Nedergids.nl en Infofrankrijk.com.</b> Actualiseer jaarlijks de kalenderlinks en de ARS‑constanten (zie blok hierboven). Plaats je GitHub‑issues/PR’s voor wijzigingen.</p>
+          <pre class="mono" id="constantsView"></pre>
+          <p class="fine">Laatst bijgewerkt: 15 oktober 2025</p>
+        </div>
+      </article>
+    </section>
+
+      <article class="card">
+        <div class="hd"><h2>Credits & bijwerken</h2><span class="tag">Transparant</span></div>
+        <div class="bd">
+          <p>Deze gids is samengesteld voor Nederlanders/Vlamingen in Frankrijk. Actualiseer jaarlijks de kalenderlinks en de ARS‑constanten (zie blok hieronder). Plaats je GitHub‑issues/PR’s voor wijzigingen.</p>
+          <pre class="mono" id="constantsView"></pre>
+        </div>
+      </article>
+    </section>
+
+    <footer>
+      <p class="fine">Disclaimer: informatie is met zorg samengesteld maar blijft indicatief; raadpleeg altijd de officiële bronnen (Ministère/Service‑Public/CAF/Académies/NOB). © 2025</p>
+    </footer>
+  </main>
+
+  <script>
+    // -----------------------------
+    //  FOCUS MODE (sections)
+    // -----------------------------
+    const SECTION_IDS = [
+      'intro','overzicht','kalender','ars','inschrijven','taal','keuzehulp','achtergrond','bronnen','faq'
+    ];
+
+    function setFocusMode(target){
+      const notice = document.getElementById('focusNotice');
+      const allBtn = document.querySelector('.focusbar .filters button[data-focus="all"]');
+      document.querySelectorAll('.focusbar .filters button').forEach(btn=>btn.classList.remove('active'));
+      if(!target || target==='all'){
+        SECTION_IDS.forEach(id=>{ const el = document.getElementById(id); if(el) el.style.display=''; });
+        notice.style.display='none';
+        if(allBtn) allBtn.classList.add('active');
+        return;
+      }
+      SECTION_IDS.forEach(id=>{
+        const el = document.getElementById(id);
+        if(el) el.style.display = (id===target)? '' : 'none';
+      });
+      const labelMap = {kalender:'Kalender', ars:'ARS', taal:'Taal & NTC', keuzehulp:'Keuzehulp'};
+      notice.innerHTML = `Focus: <b>${labelMap[target]||target}</b> — <a href="#" class="clear">Toon alles</a>`;
+      notice.style.display='block';
+      // reflect in URL hash (shareable)
+      location.hash = `focus=${encodeURIComponent(target)}`;
+      // activate button
+      const btn = document.querySelector(`.focusbar .filters button[data-focus="${CSS.escape(target)}"]`);
+      if(btn) btn.classList.add('active');
+    }
+
+    function initFocusFromURL(){
+      const h = location.hash||'';
+      const m = h.match(/focus=([^&]+)/);
+      if(m){ setFocusMode(decodeURIComponent(m[1])); }
+    }
+
+    // -----------------------------
+    //  CONFIGURABLE CONSTANTS (update yearly)
+    // -----------------------------
+    const CFG = {
+      brandYear: "2025",
+      arsReferenceDateYear: 2024, // leeftijd op 31-12-2024 voor rentrée 2025
+      arsAmountsEUR: { // indicatief – check Service-Public/CAF elk jaar
+        // leeftijdsklasse op 31-12-refjaar
+        age6to10: 423.48,
+        age11to14: 446.85,
+        age15to18: 462.33
+      },
+      officialLinks: {
+        ministereCalendrier: "https://www.education.gouv.fr/calendrier-scolaire-2025-2026-100148",
+        servicePublicVacances: "https://www.service-public.fr/particuliers/actualites/A18008",
+        servicePublicARS: "https://www.service-public.fr/particuliers/vosdroits/F1878",
+        caf: "https://www.caf.fr/",
+        nobZoeker: "https://www.stichtingnob.nl/scholenzoeker"
+      }
+    };
+
+    // Helper: format euro
+    const eur = n => n.toLocaleString('nl-NL',{style:'currency',currency:'EUR',maximumFractionDigits:2});
+
+    // Render constants preview
+    const constantsView = document.getElementById('constantsView');
+    constantsView.textContent = JSON.stringify(CFG, null, 2);
+
+    // Hero ARS year tags
+    document.getElementById('arsYearTag').textContent = CFG.brandYear;
+    document.getElementById('arsRefYear').textContent = CFG.arsReferenceDateYear;
+
+    // -----------------------------
+    //  Leeftijds‑wizard
+    // -----------------------------
+    const ageEl = document.getElementById('age');
+    const ageOut = document.getElementById('ageOut');
+    ageEl.addEventListener('input', ()=>{
+      const a = Number(ageEl.value||0);
+      let phase = "";
+      if (a < 0) phase = "Onjuiste leeftijd.";
+      else if (a < 3) phase = "<b>Maternelle</b> (vanaf ±2,5 jaar).";
+      else if (a <= 5) phase = "<b>Maternelle</b>.";
+      else if (a <= 10) phase = "<b>Élémentaire</b> (basisschool).";
+      else if (a <= 14) phase = "<b>Collège</b> (middelbaar).";
+      else if (a <= 18) phase = "<b>Lycée</b> (met baccalauréat).";
+      else phase = "Boven schoolplichtige leeftijden; kijk naar hoger onderwijs of alternatieven.";
+      ageOut.innerHTML = phase + " <span class=\"hint\">School beslist o.b.v. geboortedatum/dossier.</span>";
+    });
+
+    // -----------------------------
+    //  Zone‑selector (links en checklist)
+    // -----------------------------
+    const zoneEl = document.getElementById('zone');
+    const yearEl = document.getElementById('year');
+    const zoneOut = document.getElementById('zoneOut');
+
+    function renderZone(){
+      const z = zoneEl.value; const y = yearEl.value;
+      if(!z){ zoneOut.innerHTML = "Selecteer je zone voor officiële kalenderlinks."; return; }
+      const L = CFG.officialLinks;
+      zoneOut.innerHTML = `
+        <div><b>${z} · ${y}</b></div>
+        <ul class="list-check">
+          <li>Bekijk de officiële kalender bij het <b>Ministère</b>: <a href="${L.ministereCalendrier}" target="_blank" rel="noopener">education.gouv.fr</a></li>
+          <li>Controleer praktische weergave bij <b>Service‑Public</b>: <a href="${L.servicePublicVacances}" target="_blank" rel="noopener">service-public.fr</a> · <a href="https://www.service-public.gouv.fr/simulateur/calcul/Dates_Vacances_Scolaires" target="_blank" rel="noopener">simulator</a></li>
+          <li>Noteer: <span class="pill">rentrée</span> · <span class="pill">Toussaint</span> · <span class="pill">Noël</span> · <span class="pill">hiver</span> · <span class="pill">printemps</span> · <span class="pill">été</span></li>
+        </ul>
+        <div class="callout">Tip: zet de datums direct in je digitale agenda en let op <i>faire le pont</i>‑dagen.</div>
+      `;
+    }
+    zoneEl.addEventListener('change', renderZone);
+    yearEl.addEventListener('change', renderZone);
+
+    // -----------------------------
+    //  ARS (indicatie)
+    // -----------------------------
+    const kidsEl = document.getElementById('kids');
+    const agesWrap = document.getElementById('kidsAgesWrap');
+    const incomeEl = document.getElementById('incomeBand');
+    const arsOut = document.getElementById('arsOut');
+
+    function rebuildAgeInputs(){
+      agesWrap.innerHTML = '';
+      const n = Number(kidsEl.value||0);
+      for(let i=1;i<=n;i++){
+        const id = 'kidAge'+i;
+        const lbl = document.createElement('label');
+        lbl.htmlFor = id; lbl.textContent = `Leeftijd kind ${i} op 31-12-${CFG.arsReferenceDateYear}`;
+        const inp = document.createElement('input');
+        inp.type = 'number'; inp.min = 0; inp.max = 20; inp.placeholder = 'bijv. 11'; inp.id = id; inp.className = 'kidAge';
+        agesWrap.appendChild(lbl); agesWrap.appendChild(inp);
+      }
+    }
+
+    function calcARS(){
+      const n = Number(kidsEl.value||0);
+      if(n<=0){ arsOut.innerHTML = `Vul aantal kinderen in en hun leeftijd op 31‑12‑${CFG.arsReferenceDateYear}.`; return; }
+      const ages = Array.from(document.querySelectorAll('.kidAge')).map(i=>Number(i.value||0));
+      if(ages.length!==n || ages.some(a=>a<=0)){
+        arsOut.innerHTML = 'Vul alle leeftijden in (6–18 jaar).'; return;
+      }
+      // Indicatieve som o.b.v. leeftijdsklassen
+      let total=0; let br=[];
+      for(const a of ages){
+        if(a>=6 && a<=10){ total+=CFG.arsAmountsEUR.age6to10; br.push(`${a} → ${eur(CFG.arsAmountsEUR.age6to10)}`); }
+        else if(a>=11 && a<=14){ total+=CFG.arsAmountsEUR.age11to14; br.push(`${a} → ${eur(CFG.arsAmountsEUR.age11to14)}`); }
+        else if(a>=15 && a<=18){ total+=CFG.arsAmountsEUR.age15to18; br.push(`${a} → ${eur(CFG.arsAmountsEUR.age15to18)}`); }
+        else { br.push(`${a} → buiten ARS‑leeftijd`); }
+      }
+      const band = incomeEl.value;
+      let note = '';
+      if(band==='likely') note = '⟶ Indicatief: inkomensplafond lijkt haalbaar.';
+      else if(band==='maybe') note = '⟶ Let op: rond plafond; CAF kan afbouwen of weigeren.';
+      else if(band==='over') note = '⟶ Boven plafond: mogelijk geen recht (bevestig bij CAF).';
+      else note = '⟶ Controleer altijd de plafonds en voorwaarden.';
+
+      arsOut.innerHTML = `
+        <div><b>Indicatieve optelsom</b></div>
+        <ul class="list-check">${br.map(x=>`<li>${x}</li>`).join('')}</ul>
+        <div><b>Totaal indicatief:</b> ${eur(total)}</div>
+        <div class="hint">${note}</div>
+        <div class="callout">Dit is <b>géén</b> toekenning. Raadpleeg <a href="${CFG.officialLinks.servicePublicARS}" target="_blank" rel="noopener">Service‑Public</a> en <a href="${CFG.officialLinks.caf}" target="_blank" rel="noopener">CAF</a> voor de <b>bindende</b> bedragen en plafonds.</div>
+      `;
+    }
+
+    kidsEl.addEventListener('input', ()=>{ rebuildAgeInputs(); calcARS(); });
+    incomeEl.addEventListener('change', calcARS);
+    agesWrap.addEventListener('input', calcARS);
+
+    // -----------------------------
+    //  Keuzehulp (rule‑of‑thumb)
+    // -----------------------------
+    const adviceOut = document.getElementById('advice');
+    const qs = ['q1','q2','q3','q4','q5'].map(id=>document.getElementById(id));
+    qs.forEach(el=>el.addEventListener('change', renderAdvice));
+
+    function renderAdvice(){
+      const [stay, ib, budget, back, integrate] = qs.map(el=>el.value);
+      if(qs.some(el=>el.value==='—')){ adviceOut.textContent = 'Beantwoord alle vragen.'; return; }
+      // Scoring heuristiek
+      let scoreIntl = 0, scoreFR = 0;
+      // verblijf
+      if(stay==='Ja') scoreFR+=2; else scoreIntl+=1;
+      // internationaal curriculum eis
+      if(ib==='Ja, bij voorkeur') scoreIntl+=3; else scoreFR+=1;
+      // budget/afstand
+      if(budget==='Ja') scoreIntl+=1; else scoreFR+=1;
+      // terugkeer kans
+      if(back==='Ja') { scoreFR+=1; scoreIntl+=1; } else scoreFR+=1;
+      // integratie
+      if(integrate==='Ja') scoreFR+=3; else scoreIntl+=1;
+
+      let rec = '';
+      if(scoreFR>=scoreIntl+2){
+        rec = `<b>Advies:</b> Kies voor <b>gewone Franse school</b> en onderhoud Nederlands via <b>NOB/NTC</b>. Bezoek lokale écoles/colleges/lycées en vraag naar taalondersteuning. Link: <a href="${CFG.officialLinks.nobZoeker}" target="_blank" rel="noopener">NOB‑zoeker</a>.`;
+      } else if(scoreIntl>=scoreFR+2){
+        rec = `<b>Advies:</b> Overweeg een <b>internationale school (IB/ENG)</b> + aanvullend NL (NTC). Check reistijd en schoolgeld; plan intake en proefdagen. Link: <a href="${CFG.officialLinks.nobZoeker}" target="_blank" rel="noopener">NOB‑zoeker</a>.`;
+      } else {
+        rec = `<b>Advies:</b> Beide routes zijn verdedigbaar. Maak een shortlist (1–2 Franse scholen + 1 internationale) en vergelijk op reistijd, kosten, taalondersteuning en sociale inbedding. Voeg NTC toe voor NL‑onderhoud.`;
+      }
+      adviceOut.innerHTML = `<div class="callout">${rec}</div>`;
+    }
+
+    // Initial UI
+    rebuildAgeInputs();
+
+    // Focus menu events
+    document.querySelectorAll('.focusbar .filters button').forEach(btn=>{
+      btn.addEventListener('click', (e)=>{
+        const f = e.currentTarget.getAttribute('data-focus');
+        if(f==='all'){ setFocusMode('all'); location.hash=''; return; }
+        setFocusMode(f);
+      });
+    });
+    document.getElementById('focusNotice').addEventListener('click',(e)=>{
+      const a = e.target.closest('.clear');
+      if(a){ e.preventDefault(); setFocusMode('all'); }
+    });
+    window.addEventListener('hashchange', initFocusFromURL);
+    initFocusFromURL();
+  </script>
+</body>
+</html>
